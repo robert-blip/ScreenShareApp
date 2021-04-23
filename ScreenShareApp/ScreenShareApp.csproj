@@ -6,7 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Description>App to be able to share a part of the screen using Skype or MS Teams.</Description>
     <Copyright>Robert Lelieveld</Copyright>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>ScreenShareApp.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
