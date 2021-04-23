@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Description>App to be able to share a part of the screen using Skype or MS Teams.</Description>
+    <Copyright>Robert Lelieveld</Copyright>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>ScreenShareApp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+</Project>
