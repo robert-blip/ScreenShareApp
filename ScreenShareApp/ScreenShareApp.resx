@@ -58,9 +58,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBoxMessage.Text" xml:space="preserve">
-    <value>To start capturing press Ctrl and Alt. This windows will then become transparent and will pass through all controls (keyboard and mouse).
+    <value>To start capturing press Ctrl and Alt. This window will then become transparent and will pass through all controls (keyboard and mouse).
 
-To stop, use the taskbar (or alt-tab) to focus on this app.
+To stop, use the taskbar (or alt-tab) to focus on this app (note that it passes through all controls, so you cannot click on the window).
 Then, press Ctrl and Alt to stop capturing.</value>
   </data>
 </root>
