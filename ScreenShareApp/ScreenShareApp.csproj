@@ -8,6 +8,7 @@
     <Copyright>Robert Lelieveld</Copyright>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>ScreenShareApp.snk</AssemblyOriginatorKeyFile>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
