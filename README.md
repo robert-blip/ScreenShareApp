@@ -1,0 +1,2 @@
+# ScreenShareApp
+App to share a part of the desktop.
