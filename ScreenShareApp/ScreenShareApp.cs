@@ -34,6 +34,11 @@ namespace ScreenShareApp
             }
         }
 
+        private void TimerScreenCapture_Tick(object sender, EventArgs e)
+        {
+            CheckSizeAndCaptureScreen();
+        }
+
         private void SwitchState()
         {
             if (transparentState)
@@ -94,26 +99,30 @@ namespace ScreenShareApp
             return captureLocation;
         }
 
-        private void CaptureScreen()
+        private void CheckSizeAndCaptureScreen()
+        {
+            Size size = this.pictureBox1.Size;
+
+            if (size.Height > 0 & size.Width > 0)
+            {
+                CaptureScreen(size);
+            }
+        }
+
+        private void CaptureScreen(Size size)
         {
             Point captureLocation = GetCaptureLocation();
-            Size s = this.pictureBox1.Size;
             Bitmap oldImage = memoryImage;
-            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
+            memoryImage = new Bitmap(size.Width, size.Height, myGraphics);
 
             using (Graphics memoryGraphics = Graphics.FromImage(memoryImage))
             {
-                memoryGraphics.CopyFromScreen(captureLocation.X, captureLocation.Y, 0, 0, s);
+                memoryGraphics.CopyFromScreen(captureLocation.X, captureLocation.Y, 0, 0, size);
                 this.pictureBox1.Image = memoryImage;
             }
 
             if (oldImage != null)
                 oldImage.Dispose();
-        }
-
-        private void TimerScreenCapture_Tick(object sender, EventArgs e)
-        {
-            CaptureScreen();
         }
     }
 }
