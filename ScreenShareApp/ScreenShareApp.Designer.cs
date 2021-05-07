@@ -70,6 +70,7 @@ namespace ScreenShareApp
             this.KeyPreview = true;
             this.Name = "ScreenShareApp";
             this.Text = "ScreenShareApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScreenShareApp_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
