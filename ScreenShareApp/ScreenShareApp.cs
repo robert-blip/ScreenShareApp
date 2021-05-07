@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace ScreenShareApp
 {
@@ -10,6 +11,7 @@ namespace ScreenShareApp
         private bool transparentState;
         private Graphics myGraphics;
         private Bitmap memoryImage;
+        private bool windowsSessionLocked;
 
         public ScreenShareApp()
         {
@@ -21,9 +23,28 @@ namespace ScreenShareApp
             myGraphics = this.CreateGraphics();
             initialStyle = WinAPI.User32Wrapper.GetWindowLong(this.Handle, WinAPI.GetWindowLongEnum.ExStyle);
 
+            windowsSessionLocked = false;
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
             transparentState = false;
             SetOpaque();
             this.TopMost = true;
+        }
+
+        private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                windowsSessionLocked = true;
+            }
+            if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {
+                windowsSessionLocked = false;
+            }
+        }
+
+        private void ScreenShareApp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -103,7 +124,7 @@ namespace ScreenShareApp
         {
             Size size = this.pictureBox1.Size;
 
-            if (size.Height > 0 & size.Width > 0)
+            if (!windowsSessionLocked & size.Height > 0 & size.Width > 0)
             {
                 CaptureScreen(size);
             }
@@ -114,7 +135,7 @@ namespace ScreenShareApp
             Point captureLocation = GetCaptureLocation();
             Bitmap oldImage = memoryImage;
             memoryImage = new Bitmap(size.Width, size.Height, myGraphics);
-
+            
             using (Graphics memoryGraphics = Graphics.FromImage(memoryImage))
             {
                 memoryGraphics.CopyFromScreen(captureLocation.X, captureLocation.Y, 0, 0, size);
@@ -124,5 +145,6 @@ namespace ScreenShareApp
             if (oldImage != null)
                 oldImage.Dispose();
         }
+
     }
 }
