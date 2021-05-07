@@ -4,11 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <Description>App to be able to share a part of the screen using Skype or MS Teams.</Description>
+    <Description>App to be able to share a part of the screen when using Skype or MS Teams.</Description>
     <Copyright>Robert Lelieveld</Copyright>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>ScreenShareApp.snk</AssemblyOriginatorKeyFile>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
+    <Authors>Robert Lelieveld</Authors>
   </PropertyGroup>
 
 </Project>
